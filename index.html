@@ -20,22 +20,22 @@
     <div class="row">
       <div class="g-col-4">
         <div class="input-group mb-3">
-          <span class="input-group-text" id="storeId">Store</span>
-          <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="store" disabled>
+          <span class="input-group-text" id="storeIdLabel">Store</span>
+          <input type="text" id="storeId" class="form-control" placeholder="" aria-label="Username" aria-describedby="storeId" disabled>
         </div>
         <div class="input-group mb-3">
-          <span class="input-group-text" id="meterType">Meter Type</span>
-          <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="" disabled>
+          <span class="input-group-text" id="meterTypeLabel">Meter Type</span>
+          <input type="text" id="meterType" class="form-control" placeholder="" aria-label="Username" aria-describedby="meterType" disabled>
         </div>
         <div class="input-group mb-3">
-          <span class="input-group-text" id="meterId">Meter Id</span>
-          <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="" disabled>
+          <span class="input-group-text" id="meterIdLabel">Meter Id</span>
+          <input type="text" id="meterId" class="form-control" placeholder="" aria-label="Username" aria-describedby="meterId" disabled>
         </div>
         <div class="input-group mb-3">
-          <span class="input-group-text" id="value">Value</span>
-          <input type="text" class="form-control" placeholder="enter meter value" aria-label="Username" aria-describedby="">
+          <span class="input-group-text" id="valueLabel">Value</span>
+          <input type="text" id="value" class="form-control" placeholder="enter meter value" aria-label="Username" aria-describedby="value">
         </div>
-        <input class="btn btn-primary" type="submit" value="Submit">
+        <input class="btn btn-primary" type="submit" value="Submit" onclick="test()">
       </div>
     </div>
   </div>
@@ -55,6 +55,12 @@
         document.getElementById("meterType").value = 'W';
         document.getElementById("meterId").value = data[1];
       }
+    }
+
+    function test() {
+      document.getElementById("storeId").value = 'test';
+      document.getElementById("meterType").value = 'W';
+      document.getElementById("meterId").value = 'test2';
     }
 
     let html5QrcodeScanner = new Html5QrcodeScanner(
