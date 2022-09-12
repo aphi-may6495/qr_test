@@ -10,7 +10,7 @@
 
 <body>
   <div style="width: 500px" id="reader"></div>
-  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <script src="https://raw.githubusercontent.com/mebjas/html5-qrcode/master/minified/html5-qrcode.min.js"></script>
   <script>
     function onScanSuccess(decodedText, decodedResult) {
       // Handle on success condition with the decoded text or result.
@@ -23,6 +23,19 @@
         qrbox: 250
       });
     html5QrcodeScanner.render(onScanSuccess);
+    // This method will trigger user permissions
+    Html5Qrcode.getCameras().then(devices => {
+      /**
+       * devices would be an array of objects of type:
+       * { id: "id", label: "label" }
+       */
+      if (devices && devices.length) {
+        var cameraId = devices[0].id;
+        // .. use this to start scanning.
+      }
+    }).catch(err => {
+      // handle err
+    });
   </script>
 </body>
 
