@@ -6,14 +6,40 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script> 
 </head>
 
-<body>
-  <div style="width: 500px" id="reader"></div>
+<body style="align-content: center;">
+  <div class="grid text-center">
+    <div class="g-col-8" style="width: 500px" id="reader"></div>
+    <div class="g-col-8">
+      <div class="grid text-center">
+        <div class="input-group mb-3 g-col-8">
+          <span class="input-group-text" id="basic-addon1">Store</span>
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" disabled>
+        </div>
+        <div class="input-group mb-3 g-col-8">
+          <span class="input-group-text" id="basic-addon1">Meter Type</span>
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" disabled>
+        </div>
+        <div class="input-group mb-3 g-col-8">
+          <span class="input-group-text" id="basic-addon1">Meter Id</span>
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" disabled>
+        </div>
+        <div class="input-group mb-3 g-col-8">
+          <span class="input-group-text" id="basic-addon1">Value</span>
+          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="https://raw.githubusercontent.com/mebjas/html5-qrcode/master/minified/html5-qrcode.min.js"></script>
   <script>
+    var qr_data;
     function onScanSuccess(decodedText, decodedResult) {
       // Handle on success condition with the decoded text or result.
+      qr_data = decodedText
       console.log(`Scan result: ${decodedText}`, decodedResult);
     }
 
