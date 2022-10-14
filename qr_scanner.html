@@ -21,27 +21,27 @@
       <div class="g-col-4">
         <div class="input-group mb-3">
           <span class="input-group-text" id="storeIdLabel">Store</span>
-          <input type="text" id="storeId" class="form-control" placeholder="" aria-label="Username" aria-describedby="storeId" disabled>
+          <input type="text" id="storeId" class="form-control" placeholder="" aria-label="storeId" aria-describedby="storeId" disabled>
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="unitNumLabel">Unit Number</span>
-          <input type="text" id="unitNum" class="form-control" placeholder="" aria-label="Username" aria-describedby="unitNum" disabled>
+          <input type="text" id="unitNum" class="form-control" placeholder="" aria-label="unitNum" aria-describedby="unitNum" disabled>
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="meterTypeLabel">Meter Type</span>
-          <input type="text" id="meterType" class="form-control" placeholder="" aria-label="Username" aria-describedby="meterType" disabled>
+          <input type="text" id="meterType" class="form-control" placeholder="" aria-label="meterType" aria-describedby="meterType" disabled>
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="meterIdLabel">Meter Id</span>
-          <input type="text" id="meterId" class="form-control" placeholder="" aria-label="Username" aria-describedby="meterId" disabled>
+          <input type="text" id="meterId" class="form-control" placeholder="" aria-label="meterId" aria-describedby="meterId" disabled>
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="ctValue">CT Value</span>
-          <input type="text" id="ctValue" class="form-control" placeholder="" aria-label="Username" aria-describedby="ctValue" disabled>
+          <input type="text" id="ctValue" class="form-control" placeholder="" aria-label="ctValue" aria-describedby="ctValue" disabled>
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="valueLabel">Value</span>
-          <input type="text" id="value" class="form-control" placeholder="enter meter value" aria-label="Username" aria-describedby="value">
+          <input type="text" id="value" class="form-control" placeholder="enter meter value" aria-label="value" aria-describedby="value">
         </div>
         <input class="btn btn-primary" type="submit" value="Submit" onclick="test()">
         <br><br>
@@ -61,13 +61,13 @@
         var decode_64 = atob(qr_data);
         var decode_8 = decodeURIComponent(escape(decode_64));
         var data = decode_8.split('|');
+        console.log(data);
         if (data != null && data.length == 5) {
-          console.log(data);
           document.getElementById("storeId").value = data[0];
           document.getElementById("unitNum").value = data[1];
           document.getElementById("meterType").value = data[2];
           document.getElementById("meterId").value = data[3];
-          document.getElementById("ctValue").value = data[4];
+          document.getElementById("ctValue").value = data[3];
         } else {
           alert("Data Incorrect")
         }
@@ -75,7 +75,12 @@
     }
 
     function test() {
-      console.log("test")
+      console.log(document.getElementById("storeId").value)
+      console.log(document.getElementById("unitNum").value)
+      console.log(document.getElementById("meterType").value)
+      console.log(document.getElementById("meterId").value)
+      console.log(document.getElementById("ctValue").value)
+      console.log(document.getElementById("value").value)
     }
 
     let html5QrcodeScanner = new Html5QrcodeScanner(
