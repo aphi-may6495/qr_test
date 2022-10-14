@@ -24,12 +24,20 @@
           <input type="text" id="storeId" class="form-control" placeholder="" aria-label="Username" aria-describedby="storeId" disabled>
         </div>
         <div class="input-group mb-3">
+          <span class="input-group-text" id="unitNumLabel">Unit Number</span>
+          <input type="text" id="unitNum" class="form-control" placeholder="" aria-label="Username" aria-describedby="unitNum" disabled>
+        </div>
+        <div class="input-group mb-3">
           <span class="input-group-text" id="meterTypeLabel">Meter Type</span>
           <input type="text" id="meterType" class="form-control" placeholder="" aria-label="Username" aria-describedby="meterType" disabled>
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="meterIdLabel">Meter Id</span>
           <input type="text" id="meterId" class="form-control" placeholder="" aria-label="Username" aria-describedby="meterId" disabled>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="ctValue">CT Value</span>
+          <input type="text" id="ctValue" class="form-control" placeholder="" aria-label="Username" aria-describedby="ctValue" disabled>
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="valueLabel">Value</span>
@@ -49,19 +57,25 @@
       // Handle on success condition with the decoded text or result.
       console.log(`Scan result: ${decodedText}`, decodedResult);
       qr_data = decodedText
-      if (qr_data.length != 0) {
-        var data = qr_data.split('-');
-        console.log(data);
-        document.getElementById("storeId").value = data[0];
-        document.getElementById("meterType").value = 'W';
-        document.getElementById("meterId").value = data[1];
+      if (qr_data != null || qr_data != "") {
+        var decode_64 = atob(qr_data);
+        var decode_8 = decodeURIComponent(escape(decode_64));
+        var data = decode_8.split('|');
+        if (data != null && data.length == 5) {
+          console.log(data);
+          document.getElementById("storeId").value = data[0];
+          document.getElementById("unitNum").value = data[1];
+          document.getElementById("meterType").value = data[2];
+          document.getElementById("meterId").value = data[3];
+          document.getElementById("ctValue").value = data[4];
+        } else {
+          alert("Data Incorrect")
+        }
       }
     }
 
     function test() {
-      document.getElementById("storeId").value = 'test';
-      document.getElementById("meterType").value = 'W';
-      document.getElementById("meterId").value = 'test2';
+      console.log("test")
     }
 
     let html5QrcodeScanner = new Html5QrcodeScanner(
