@@ -37,7 +37,8 @@
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="ctValueLabel">CT Value</span>
-          <input type="text" id="ctValue" class="form-control" placeholder="" aria-label="ctValue" aria-describedby="ctValue" disabled>
+          <input type="text" id="ctValue" class="form-control" placeholder="" aria-label="ctValue" aria-describedby="ctValue">
+          <small id="ectVAlueHelp" class="form-text text-muted">You can change it if the value is incorrect.</small>
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="valueLabel">Value</span>
@@ -53,21 +54,23 @@
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
   <script>
     var qr_data;
+    var data_arr_result;
     function onScanSuccess(decodedText, decodedResult) {
       // Handle on success condition with the decoded text or result.
       console.log(`Scan result: ${decodedText}`, decodedResult);
       qr_data = decodedText
       if (qr_data != null || qr_data != "") {
-        var decode_64 = atob(qr_data);
-        var decode_8 = decodeURIComponent(escape(decode_64));
-        var data = decode_8.split('|');
-        console.log(data);
-        if (data != null && data.length == 5) {
-          document.getElementById("storeId").value = data[0];
-          document.getElementById("unitNum").value = data[1];
-          document.getElementById("meterType").value = data[2];
-          document.getElementById("meterId").value = data[3];
-          document.getElementById("ctValue").value = data[4];
+        // var decode_64 = atob(qr_data);
+        // var decode_8 = decodeURIComponent(escape(decode_64));
+        // var data = decode_8.split('|');
+        var data_arr_result = qr_data.split('|');
+        console.log(data_arr_result);
+        if (data_arr_result != null && data_arr_result.length >= 6) {
+          document.getElementById("storeId").value = "พระราม 4";
+          document.getElementById("unitNum").value = data_arr_result[1];
+          document.getElementById("meterType").value = data_arr_result[3];
+          document.getElementById("meterId").value = data_arr_result[4];
+          document.getElementById("ctValue").value = data_arr_result[5];
         } else {
           alert("Data Incorrect")
         }
@@ -81,6 +84,7 @@
       console.log(document.getElementById("meterId").value)
       console.log(document.getElementById("ctValue").value)
       console.log(document.getElementById("value").value)
+      console.log(qr_data)
     }
 
     let html5QrcodeScanner = new Html5QrcodeScanner(
