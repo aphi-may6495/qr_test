@@ -111,11 +111,16 @@
       myHeaders.append("Access-Control-Request-Headers", "Content-Type, Authorization");
       myHeaders.append('Access-Control-Allow-Credentials', 'true')
       myHeaders.append('Access-Control-Allow-Origin', '*');
+      myHeaders.append('Origin', '*');
+      myHeaders.append('Content-Type', 'application/json');
+      myHeaders.append('Accept', 'application/json');
       // myHeaders.append("Cookie", "COOKIENAME=dapi-wk09");
 
       var requestOptions = {
         method: 'POST',
+        mode: 'cors',
         headers: myHeaders,
+        credentials: 'include',
         redirect: 'follow'
       };
 
