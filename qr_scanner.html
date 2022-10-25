@@ -117,22 +117,25 @@
       myHeaders.append('Content-Type', 'application/json');
       // myHeaders.append('Accept', 'application/json');
       // // myHeaders.append("Cookie", "COOKIENAME=dapi-wk09");
-
-      var raw = JSON.stringify({
-        "storeSeq":251,
-        "year":2022,
-        "period":11,
-        "serviceCode":"SV45",
-        "unitNo":"2CR201",
-        "meterNo":"9802276",
-        "useDate":11,
-        "readQty":100,
-        "oldQty":80,
-        "diffQty":20,
-        "refInvNo":"A",
-        "status":"A",
-        "ctMeter":1
-      });
+      var raw;
+      if (data_arr_result != null && data_arr_result.length >= 6) {
+        raw = JSON.stringify({
+          "storeSeq": 251,
+          "year": 2022,
+          "period": 11,
+          "unitNo": data_arr_result[1],
+          "serviceCode": data_arr_result[2],
+          "meterNo": data_arr_result[4],
+          "useDate": 11,
+          "readQty": 100,
+          "refInvNo": "A",
+          "status": "A",
+          "ctMeter": data_arr_result[5]
+        });
+      } else {
+        raw = JSON.stringify({})
+        alert("Data Incorrect")
+      }
 
       var requestOptions = {
         method: 'POST',
@@ -145,8 +148,8 @@
 
       fetch("https://bgcdapi.bigc.co.th/api/botnoi/updatePdaDetail", requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .then(result => alert(result))
+        .catch(error => { console.log('error', error); alert(error) });
     }
 
     let html5QrcodeScanner = new Html5QrcodeScanner(
