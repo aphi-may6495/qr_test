@@ -11,6 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -88,10 +89,10 @@
       console.log(qr_data)
       console.log(data_arr_result)
 
-      // fetch("http://172.28.4.190:8180/api/dropdown/getStoreStatus")
-      //   .then((response) => response.json())
-      //   .then((data) => console.log(data));
+      call_with_ajax();
+    }
 
+    async function call_with_fetch() {
       var myHeaders = new Headers();
       myHeaders.append("Authorization", "Basic Ym90bm9pOnNlY3JldGtleQ==");
       myHeaders.append("X-API-Key", "RRJrhrbNIfXtmvPNnKQVhIX0XHkTCQ9P");
@@ -135,6 +136,34 @@
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log("error", error));
+    }
+
+    async function call_with_ajax() {
+      var settings = {
+      "url": "https://bgcdapi.bigc.co.th/api/botnoi/updatePdaDetail",
+      "method": "POST",
+      "timeout": 0,
+      "headers": {
+        "Authorization": "Basic Ym90bm9pOnNlY3JldGtleQ==",
+        "X-API-Key": "RRJrhrbNIfXtmvPNnKQVhIX0XHkTCQ9P",
+        "Content-Type": "application/json",
+        "Cookie": "COOKIENAME=bgcdapi-wk01"
+      },
+      "data": JSON.stringify({
+        "storeSeq": 251,
+        "year": 2022,
+        "period": 11,
+        "serviceCode": "SV45",
+        "unitNo": "GCR142",
+        "meterNo": "011-ESM020",
+        "readQty": 180,
+        "ctMeter": 11
+      }),
+    };
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
     }
 
     let html5QrcodeScanner = new Html5QrcodeScanner(
