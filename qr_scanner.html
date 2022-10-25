@@ -62,8 +62,8 @@
       if (qr_data != null || qr_data != "") {
         // var decode_64 = atob(qr_data);
         // var decode_8 = decodeURIComponent(escape(decode_64));
-        // var data = decode_8.split('|');
-        data_arr_result = qr_data.split('|');
+        // var data = decode_8.split("|");
+        data_arr_result = qr_data.split("|");
         console.log(data_arr_result);
         if (data_arr_result != null && data_arr_result.length >= 6) {
           document.getElementById("storeId").value = "พระราม 4";
@@ -87,19 +87,19 @@
       console.log(qr_data)
       console.log(data_arr_result)
 
-      // fetch('http://172.28.4.190:8180/api/dropdown/getStoreStatus')
+      // fetch("http://172.28.4.190:8180/api/dropdown/getStoreStatus")
       //   .then((response) => response.json())
       //   .then((data) => console.log(data));
-      // const response = await fetch('https://bgcdapi.bigc.co.th/api/botnoi/employeeProfileById?employeeCode=296593', {
-      //   method: 'POST'
+      // const response = await fetch("https://bgcdapi.bigc.co.th/api/botnoi/employeeProfileById?employeeCode=296593", {
+      //   method: "POST"
       //   // , body: myBody, // string or object
-      //   , mode: 'no-cors'
+      //   , mode: "no-cors"
       //   , headers: {
-      //     'Content-Type': 'application/json',
-      //     // 'Content-Length': '0',
-      //     'Accept': 'application/json',
-      //     'Authorization': 'Basic Ym90bm9pOnNlY3JldGtleQ==',
-      //     'X-API-Key': 'RRJrhrbNIfXtmvPNnKQVhIX0XHkTCQ9P'
+      //     "Content-Type": "application/json",
+      //     // "Content-Length": "0",
+      //     "Accept": "application/json",
+      //     "Authorization": "Basic Ym90bm9pOnNlY3JldGtleQ==",
+      //     "X-API-Key": "RRJrhrbNIfXtmvPNnKQVhIX0XHkTCQ9P"
       //   }
       // });
       // const myJson = await response.json(); //extract JSON from the http response
@@ -110,12 +110,12 @@
       myHeaders.append("Authorization", "Basic Ym90bm9pOnNlY3JldGtleQ==");
       myHeaders.append("X-API-Key", "RRJrhrbNIfXtmvPNnKQVhIX0XHkTCQ9P");
       myHeaders.append("Access-Control-Allow-Origin", "*");
-      myHeaders.append('Access-Control-Allow-Methods', 'POST, PUT, GET, OPTIONS, DELETE')
-      myHeaders.append('Access-Control-Allow-Headers', '*');
-      myHeaders.append('Cache-Control', 'no-cache');
-      myHeaders.append('Content-Type', 'application/json');
-      myHeaders.append('Content-Type', 'application/json');
-      // myHeaders.append('Accept', 'application/json');
+      myHeaders.append("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE")
+      myHeaders.append("Access-Control-Allow-Headers", "*");
+      myHeaders.append("Cache-Control", "no-cache");
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Content-Type", "application/json");
+      // myHeaders.append("Accept", "application/json");
       // // myHeaders.append("Cookie", "COOKIENAME=dapi-wk09");
       var raw;
       if (data_arr_result != null && data_arr_result.length >= 6) {
@@ -126,30 +126,26 @@
           "unitNo": data_arr_result[1],
           "serviceCode": data_arr_result[2],
           "meterNo": data_arr_result[4],
-          "useDate": 11,
           "readQty": 100,
-          "refInvNo": "A",
-          "status": "A",
           "ctMeter": data_arr_result[5]
         });
       } else {
         raw = JSON.stringify({})
-        alert("Data Incorrect")
       }
 
       var requestOptions = {
-        method: 'POST',
-        // mode: 'cors',
+        method: "POST",
+        // mode: "cors",
         headers: myHeaders,
         body: raw,
-        // credentials: 'include',
-        redirect: 'follow'
+        // credentials: "include",
+        redirect: "follow"
       };
 
       fetch("https://bgcdapi.bigc.co.th/api/botnoi/updatePdaDetail", requestOptions)
         .then(response => response.text())
         .then(result => alert(result))
-        .catch(error => { console.log('error', error); alert(error) });
+        .catch(error => { console.log("error", error); alert(error) });
     }
 
     let html5QrcodeScanner = new Html5QrcodeScanner(
