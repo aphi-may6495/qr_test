@@ -108,11 +108,13 @@
       var myHeaders = new Headers();
       myHeaders.append("Authorization", "Basic Ym90bm9pOnNlY3JldGtleQ==");
       myHeaders.append("X-API-Key", "RRJrhrbNIfXtmvPNnKQVhIX0XHkTCQ9P");
-      myHeaders.append("Cookie", "COOKIENAME=dapi-wk09");
+      myHeaders.append("Access-Control-Request-Headers", "Content-Type, Authorization");
+      myHeaders.append('Access-Control-Allow-Credentials', 'true')
+      myHeaders.append('Access-Control-Allow-Origin', '*');
+      // myHeaders.append("Cookie", "COOKIENAME=dapi-wk09");
 
       var requestOptions = {
         method: 'POST',
-        // mode: 'no-cors',
         headers: myHeaders,
         redirect: 'follow'
       };
