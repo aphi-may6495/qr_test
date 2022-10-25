@@ -87,24 +87,9 @@
       console.log(qr_data)
       console.log(data_arr_result)
 
-      // fetch("http://172.28.4.190:8180/api/dropdown/getStoreStatus")
-      //   .then((response) => response.json())
-      //   .then((data) => console.log(data));
-      // const response = await fetch("https://bgcdapi.bigc.co.th/api/botnoi/employeeProfileById?employeeCode=296593", {
-      //   method: "POST"
-      //   // , body: myBody, // string or object
-      //   , mode: "no-cors"
-      //   , headers: {
-      //     "Content-Type": "application/json",
-      //     // "Content-Length": "0",
-      //     "Accept": "application/json",
-      //     "Authorization": "Basic Ym90bm9pOnNlY3JldGtleQ==",
-      //     "X-API-Key": "RRJrhrbNIfXtmvPNnKQVhIX0XHkTCQ9P"
-      //   }
-      // });
-      // const myJson = await response.json(); //extract JSON from the http response
-      // // do something with myJson
-      // console.log(myJson)
+      fetch("http://172.28.4.190:8180/api/dropdown/getStoreStatus")
+        .then((response) => response.json())
+        .then((data) => console.log(data));
 
       var myHeaders = new Headers();
       // myHeaders.append("Authorization", "Basic Ym90bm9pOnNlY3JldGtleQ==");
@@ -141,10 +126,10 @@
         redirect: "follow"
       };
 
-      fetch("http://172.28.4.190:8180/api/dropdown/getStoreStatus", requestOptions)
-        .then(response => response.text())
-        .then(result => alert(result))
-        .catch(error => console.log("error", error));
+      // fetch("http://172.28.4.190:8180/api/dropdown/getStoreStatus", requestOptions)
+      //   .then(response => response.text())
+      //   .then(result => alert(result))
+      //   .catch(error => console.log("error", error));
     }
 
     let html5QrcodeScanner = new Html5QrcodeScanner(
