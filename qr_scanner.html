@@ -144,7 +144,7 @@
       fetch("http://172.28.4.103:8180/api/roles/findByCriteria", requestOptions)
         .then(response => response.text())
         .then(result => alert(result))
-        .catch(error => { console.log("error", error); alert(error) });
+        .catch(error => console.log("error", error));
     }
 
     let html5QrcodeScanner = new Html5QrcodeScanner(
