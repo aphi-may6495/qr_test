@@ -120,14 +120,14 @@
       var raw;
       if (data_arr_result != null && data_arr_result.length >= 6) {
         raw = JSON.stringify({
-          "storeSeq": 251,
-          "year": 2022,
-          "period": 11,
-          "unitNo": data_arr_result[1],
-          "serviceCode": data_arr_result[2],
-          "meterNo": data_arr_result[4],
-          "readQty": 100,
-          "ctMeter": data_arr_result[5]
+          // "storeSeq": 251,
+          // "year": 2022,
+          // "period": 11,
+          // "unitNo": data_arr_result[1],
+          // "serviceCode": data_arr_result[2],
+          // "meterNo": data_arr_result[4],
+          // "readQty": 100,
+          // "ctMeter": data_arr_result[5]
         });
       } else {
         raw = JSON.stringify({})
@@ -142,7 +142,7 @@
         redirect: "follow"
       };
 
-      fetch("https://bgcdapi.bigc.co.th/api/botnoi/updatePdaDetail", requestOptions)
+      fetch("http://172.28.4.103:8180/api/roles/findByCriteria", requestOptions)
         .then(response => response.text())
         .then(result => alert(result))
         .catch(error => { console.log("error", error); alert(error) });
