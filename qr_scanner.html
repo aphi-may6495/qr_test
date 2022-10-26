@@ -107,21 +107,16 @@
       // myHeaders.append("Origin", "*");
       // myHeaders.append("origin", "*");
       // // myHeaders.append("Cookie", "COOKIENAME=dapi-wk09");
-      var raw;
-      if (data_arr_result != null && data_arr_result.length >= 6) {
-        raw = JSON.stringify({
-          "storeSeq": 251,
-          "year": 2022,
-          "period": 11,
-          "unitNo": data_arr_result[1],
-          "serviceCode": data_arr_result[2],
-          "meterNo": data_arr_result[4],
-          "readQty": 100,
-          "ctMeter": data_arr_result[5]
-        });
-      } else {
-        raw = JSON.stringify({})
-      }
+      var raw = JSON.stringify({
+        "storeSeq": 251,
+        "year": 2022,
+        "period": 11,
+        "unitNo": data_arr_result[1],
+        "serviceCode": data_arr_result[2],
+        "meterNo": data_arr_result[4],
+        "readQty": 100,
+        "ctMeter": data_arr_result[5]
+      });
 
       var requestOptions = {
         method: "POST",
@@ -140,23 +135,24 @@
 
     async function call_with_ajax() {
       var settings = {
-      "url": "https://bgcdapi.bigc.co.th/api/botnoi/updatePdaDetail",
+      "url": "https://cors-anywhere.herokuapp.com/https://bgcdapi.bigc.co.th/api/botnoi/updatePdaDetail",
       "method": "POST",
       "timeout": 0,
       "headers": {
         "Authorization": "Basic Ym90bm9pOnNlY3JldGtleQ==",
         "X-API-Key": "RRJrhrbNIfXtmvPNnKQVhIX0XHkTCQ9P",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Accept": "application/json"
       },
       "data": JSON.stringify({
         "storeSeq": 251,
-        "year": 2022,
-        "period": 11,
-        "serviceCode": "SV45",
-        "unitNo": "GCR142",
-        "meterNo": "011-ESM020",
-        "readQty": 180,
-        "ctMeter": 11
+          "year": 2022,
+          "period": 11,
+          "unitNo": data_arr_result[1],
+          "serviceCode": data_arr_result[2],
+          "meterNo": data_arr_result[4],
+          "readQty": 100,
+          "ctMeter": data_arr_result[5]
       }),
     };
 
