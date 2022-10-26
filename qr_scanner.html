@@ -90,6 +90,8 @@
       console.log(data_arr_result)
 
       call_with_ajax();
+
+      call_with_fetch();
     }
 
     async function call_with_fetch() {
@@ -135,7 +137,7 @@
 
     async function call_with_ajax() {
       var settings = {
-      "url": "https://cors-anywhere.herokuapp.com/https://bgcdapi.bigc.co.th/api/botnoi/updatePdaDetail",
+      "url": "https://bgcdapi.bigc.co.th/api/botnoi/updatePdaDetail",
       "method": "POST",
       "timeout": 0,
       "headers": {
